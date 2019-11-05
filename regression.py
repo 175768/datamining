@@ -12,7 +12,20 @@ class LinearRegression:
     y = None
 
     def fit(self,x,y):
-        pass
+        """
+        >>> import regression
+        >>> import datasets
+        >>> import importlib
+        >>> x,y = datasets.load_linear_example1()
+        >>> importlib.reload(regression)
+        <module 'regression' from '/Users/e175768/temp/regression-test/regression.py'>
+        >>> model = regression.LinearRegression()
+        >>> model.fit(x,y)
+        >>> model.theta
+        array([5.30412371, 0.49484536])
+        """
+        temp = np.linalg.inv(np.dot(x.T,x))
+        self.theta = np.dot(np.dot(temp,x.T),y)
 
     def predict(self,x):
         pass
