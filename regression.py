@@ -29,7 +29,19 @@ class LinearRegression:
 
 
     def predict(self,x):
-        pass
+        """
+        >>> import datasets
+        >>> import regression
+        >>> import importlib
+        >>> x,y = datasets.load_linear_example1()
+        >>> importlib.reload(regression)
+        <module 'regression' from '/Users/e175768/temp/regression-test/regression.py'>
+        >>> model = regression.LinearRegression()
+        >>> model.fit(x,y)
+        >>> model.predict(x)
+        array([ 7.28350515,  9.2628866 , 11.7371134 , 13.71649485])
+        """
+        return np.dot(x,self.theta)
 
     def score(self,x,y):
         pass
