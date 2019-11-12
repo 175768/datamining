@@ -77,4 +77,20 @@ class RidgeRegression(LinearRegression):
        self.alpha = alpha
 
     def fit(self, input, output):
-       pass
+        """
+        >>> import datasets
+        >>> import regression
+        >>> import importlib
+        >>> X,Y = datasets.load_nonlinear_example1()
+        >>> ex_X = datasets.polynomial3_features(X)
+        >>> importlib.reload(regression)
+        <module 'regression' from '/Users/e175768/temp/regression-test/regression.py'>
+        >>> model = regression.RidgeRegression()
+        >>> model.fit(ex_X,Y)
+        >>> model.theta
+        array([ 3.54259714, -1.24971967, -0.68925104,  0.23695052])
+        """
+        xTx = np.dot(input.T, input)
+
+        I = np.eye(len(xTx))
+        self.theta = np.dot(np.dot(np.linalg.inv(xTx + self.alpha * I), input.T), output)
