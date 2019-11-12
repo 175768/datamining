@@ -58,3 +58,23 @@ class LinearRegression:
         """
         error = self.predict(x) - y
         return (error**2).sum()
+
+
+class RidgeRegression(LinearRegression):
+    """
+    >>> import datasets
+    >>> import regression
+    >>> import importlib
+    >>> importlib.reload(regression)
+    <module 'regression' from '/Users/e175768/temp/regression-test/regression.py'>
+    >>> model = regression.RidgeRegression()
+    >>> model.alpha
+    0.1
+    """
+    alpha = None
+
+    def __init__(self, alpha=0.1):
+       self.alpha = alpha
+
+    def fit(self, input, output):
+       pass
